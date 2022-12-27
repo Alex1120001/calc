@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        .calculate-metal {
+            width: 95%;
+            margin: 30px auto;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .calculate-metal h2,
+        p {
+            text-align: center;
+        }
+
+        .calculate-metal_field {
+            display: grid;
+            grid-template-columns: 49% 49%;
+            justify-content: space-between;
+            background-color: #eee;
+            padding: 12px 20px;
+            align-items: center;
+        }
+
+        .calculate-metal_field .select-field select {
+            height: 40px;
+            width: 100%;
+            outline: none;
+        }
+
+        .calculate-metal_field .select-field input {
+            height: 40px;
+            box-sizing: border-box;
+            width: 100%;
+            outline: none;
+        }
+
+        .calculate-metal_field .txt-field {
+            text-align: right;
+        }
+
+        .calculate-metal_field .txt-field span {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .calculate-metal_field+.calculate-metal_field {
+            margin-top: 5px;
+        }
+        .calc-btn{
+            box-sizing: border-box;
+            height: 45px;
+            width: 250px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <div class="calculate-metal">
+        <h2>Розрахунок лазерної різки</h2>
+        <p>Окрім роботи з листовими матеріалами, наші фахівці виконують замовлення на різання профільних, круглих та
+            квадратних труб, профілю. На даний момент ви можете отримати загальне уявлення про розрахунок вартості
+            замовлення, заповнивши поля онлайн-калькулятора.</p>
+        <div class="calculate-metal_field">
+            <div class="txt-field">
+                <span>Метал</span>
+            </div>
+            <div class="select-field">
+                <select name="" id="typeMetal">
+                    <option value="1">Сталь</option>
+                    <option value="2">Нержавіюча сталь</option>
+                    <option value="3">Дюраль/Алюміній (АМЦ, АМГ)</option>
+                    <option value="4">Латунь</option>
+                    <option value="5">Медь</option>
+                </select>
+            </div>
+        </div>
+        <div class="calculate-metal_field">
+            <div class="txt-field">
+                <span>Довжина контуру, м</span>
+            </div>
+            <div class="select-field">
+               <input id="lengthContour" type="number" value="10">
+            </div>
+        </div>
+        <div class="calculate-metal_field">
+            <div class="txt-field">
+                <span>Товщина металу, м</span>
+            </div>
+            <div class="select-field">
+                <select name="" id="metalThickness">
+                   
+                    <option value="6">1 мм</option>
+                    <option value="7.5">1.5 м</option>
+                    <option value="10">2 м</option>
+                    <option value="14">3 м</option>
+                    <option value="20">4 м</option>
+                    <option value="24">5 м</option>
+                    <option value="29">6 м</option>
+                    <option value="44">8 м</option>
+                    <option value="53.5">10 м</option>
+                    <option value="64">12м</option>
+                    <option value="77">14 м</option>
+                    <option value="96">16 м</option>
+                    <option value="107">18 м</option>
+                    <option value="120">20 м</option>
+                    <option value="130">22 м</option>
+                    <option value="148.5">25 м</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="calculate-metal_field">
+            <div class="txt-field">
+                <span>Кількість врізань</span>
+            </div>
+            <div class="select-field">
+                <input id="count" type="text" value="1">
+            </div>
+        </div>
+        <button class="calc-btn">Розрахувати вартість</button>
+        <div class="calculate-metal_field">
+            <div class="txt-field">
+                <span>Приблизна вартість:</span>
+            </div>
+            <div class="select-field">
+                <div class="result">...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.calc-btn').addEventListener('click', () => {
+            const count = document.querySelector('#count').value,
+                metalThickness = document.querySelector('#metalThickness').value,
+                lengthContour = document.querySelector('#lengthContour').value,
+                typeMetal = document.querySelector('#typeMetal').value;
+
+                let f = metalThickness*0.1 *count;
+                console.log(f); 
+            document.querySelector('.result').innerHTML = `${metalThickness*lengthContour+ f} грн.`;
+
+
+        });
+
+    </script>
+</body>
+
+</html>
